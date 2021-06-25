@@ -1,0 +1,15 @@
+Dynamic Fields in ESQL can be mapped as follows
+
+SET oRefVariable.{'LabelName'} = iRefVariable.JSON.Data.element;
+
+--if label name is a variable then remove the single quotes
+--declare the variable and the value of that variable will be set in the place of the element
+
+SET oRefVariable.{elemLabelName} = iRefVariable.JSON.Data.element;
+
+--In case of numbers to be concatenated to the elemLabelName 
+
+FOR iRefVariable AS InputRoot.JSON.Data.Element.Item[] DO
+SET oRefVariable.{'elemLabelName'|| CAST(i AS CHARACTER)} = iRefVariable.element;
+SET I = I+1;
+END FOR;
