@@ -1,0 +1,40 @@
+MbElement jsonEle = outMessage.getRootElement().createElementAsLastChild(MbJSON.PARSER_NAME);   
+MbElement dataEle = jsonEle.createElementAsLastChild(MbJSON.OBJECT, MbJSON.DATA_ELEMENT_NAME, null);   
+MbElement booksEle = dataEle.createElementAsLastChild(MbJSON.ARRAY, "Books", null);  
+MbElement book1Ele = booksEle.createElementAsLastChild(MbJSON.OBJECT, MbJSON.ARRAY_ITEM_NAME, null);   
+
+book1Ele.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, "Name", "Steve Jobs");   
+book1Ele.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, "ISBN", "1451648537");   
+book1Ele.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, "Language", "English");   
+
+MbElement book1FormatEle = book1Ele.createElementAsLastChild(MbJSON.ARRAY, "Format", null);   book1FormatEle.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, MbJSON.ARRAY_ITEM_NAME, "Hardcover");   book1FormatEle.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, MbJSON.ARRAY_ITEM_NAME, "Paperback");   book1FormatEle.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, MbJSON.ARRAY_ITEM_NAME, "Audiobook CD");   book1FormatEle.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, MbJSON.ARRAY_ITEM_NAME, "Audible"); 
+
+MbElement   book2Ele = booksEle.createElementAsLastChild(MbJSON.OBJECT, MbJSON.ARRAY_ITEM_NAME, null);   book2Ele.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, "Name", "Beautiful Whale");   
+book2Ele.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, "ISBN", "1419703846");   
+book2Ele.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, "Language", "English"); 
+MbElement book2FormatEle =   book2Ele.createElementAsLastChild(MbJSON.ARRAY, "Format", null);   book2FormatEle.createElementAsLastChild(MbElement.TYPE_NAME_VALUE, MbJSON.ARRAY_ITEM_NAME, "Hardcover");
+
+--Test Payload
+{
+  "Books": [
+    {
+      "Name": "Steve Jobs",
+      "ISBN": "1451648537",
+      "Language": "English",
+      "Format": [
+        "Hardcover",
+        "Paperback",
+        "Audiobook CD",
+        "Audible"
+      ]
+    },
+    {
+      "Name": "Beautiful Whale",
+      "ISBN": "1419703846",
+      "Language": "English",
+      "Format": [
+        "Hardcover"
+      ]
+    }
+  ]
+}  

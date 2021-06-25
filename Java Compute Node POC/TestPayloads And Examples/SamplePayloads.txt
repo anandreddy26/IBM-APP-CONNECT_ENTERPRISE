@@ -1,0 +1,36 @@
+---------JCN POC---------
+Request
+<Employee>
+<Name>Avi</Name>
+<LName>Tankaria</LName>
+<Company>IBM</Company>
+<Designation>TeamLead</Designation>
+</Employee>
+
+Response
+<Response>
+    <EmployeeDetails>
+        <EmployeFullName>Avi Tankaria</EmployeFullName>
+        <EmployeComapny>IBM</EmployeComapny>
+        <EmployeDesignation>TeamLead</EmployeDesignation>
+    </EmployeeDetails>
+</Response>
+
+-------Pay2CorpJCN Payload-------
+{
+"userDob":"28/06/1990",
+"walletUserCode":"ICICI001",
+"adharCardId":"1234567890",
+"adharRefNo":"TestRef01",
+"userName":"Test User",
+"addressLine1":"Test Address Line1",
+"addressLine2":"Test Address Line2",
+"addressLine3":"Test Address Line3",
+"emailId":"test@gmail.com",
+"mobileNo":"9912345678",
+"userBankName":"test user name",
+"userIfscCode":"ICICI001",
+"userBankAccount":"123456789",
+"requestDateTime":"01/01/2016 14:30:00"
+}
+------------------------------
