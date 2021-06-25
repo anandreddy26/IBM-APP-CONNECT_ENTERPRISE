@@ -1,0 +1,20 @@
+------Insert--------
+{
+    "name": "orange",
+    "origin": "italy",
+    "price": 100
+}
+
+-----Update--------
+
+{
+    "id": "602bbbc3caa61f755c2c14de",
+    "name": "orange",
+    "origin": "italy",
+    "price": 150
+}
+
+------Find and delete-------
+{
+    "id": "602bbc19caa61f755c2c14df"
+}
