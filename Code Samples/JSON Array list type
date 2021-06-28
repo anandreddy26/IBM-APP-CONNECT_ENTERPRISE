@@ -1,0 +1,22 @@
+		DECLARE i INTEGER 1;
+		CREATE FIELD OutputRoot.JSON.Data;
+		DECLARE outRef REFERENCE TO OutputRoot.JSON.Data;
+		SET outRef.customerId = InputRoot.JSON.Data.customerId;
+		CREATE FIELD outRef.orderNumbers IDENTITY(JSON.Array)orderNumbers;
+		FOR orderNumbers AS InputRoot.JSON.Data.orderNumbers.Item[] DO
+			SET outRef.orderNumbers.Item[i] = orderNumbers;
+		SET i = i + 1;
+		END FOR;
+    
+   Output
+   
+    {
+    "customerId": "12345",
+    "orderNumbers": [
+        "ORD10",
+        "ORD20",
+        "ORD30",
+        "ORD40",
+        "ORD50"
+    ]
+}
