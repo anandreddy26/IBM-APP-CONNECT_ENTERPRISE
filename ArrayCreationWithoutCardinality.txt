@@ -23,3 +23,14 @@ CREATE FIELD outRef.gstin_list AS GST_LIST_REF IDENTITY(JSON.Array)gstin_list;
 		
 		
 	## Above piece of code also creates Array objects for eg. ["ABC","XYZ"]	
+	
+	--------Creating JSON Array from XML Attributes in ESQL---------------
+	
+	DECLARE accountHolderNamesRef,actHolderRefItem REFERENCE TO OutputRoot;
+			 
+			CREATE FIELD outRef.accountHolderNames AS accountHolderNamesRef IDENTITY(JSON.Array)accountHolderNames;
+			
+			FOR AccountHolder AS inRef.RespData.AccHolderList.AccHolder[] DO
+				CREATE LASTCHILD OF accountHolderNamesRef AS actHolderRefItem IDENTITY(JSON.Object)Item;
+				SET actHolderRefItem = AccountHolder.(XMLNSC.Attribute)name;
+			END FOR;	
