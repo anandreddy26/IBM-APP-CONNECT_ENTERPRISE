@@ -1,0 +1,25 @@
+---- Create XML Array without Cardinality---
+
+CREATE FIELD refAPIResponse.Scorecard_details;
+		DECLARE SCORECARD_LIST_REF REFERENCE TO refAPIResponse.Scorecard_details;
+				
+		FOR inRef AS refClientAPIResponse.sales_details.Item[] DO
+			CREATE FIRSTCHILD OF SCORECARD_LIST_REF NAME 'scorecardDetails'; 
+			
+			CREATE LASTCHILD OF SCORECARD_LIST_REF.scorecardDetails NAME 'Month' VALUE inRef.month;
+			CREATE LASTCHILD OF SCORECARD_LIST_REF.scorecardDetails NAME 'Sales' VALUE inRef.value;
+			CREATE LASTCHILD OF SCORECARD_LIST_REF.scorecardDetails NAME 'Count' VALUE inRef.units;
+			CREATE LASTCHILD OF SCORECARD_LIST_REF.scorecardDetails NAME 'Activedays' VALUE '0';	 
+		END FOR;
+		
+----Create JSON Array from XML Payload without cardinality---
+DECLARE GST_LIST, GST_LIST_REF REFERENCE TO OutputRoot;
+CREATE FIELD outRef.gstin_list AS GST_LIST_REF IDENTITY(JSON.Array)gstin_list;
+		
+		FOR gstInList AS refAPIRequest.gstins.gstin[] DO
+			CREATE LASTCHILD OF GST_LIST_REF AS GST_LIST IDENTITY (JSON.Object)Item;
+			SET GST_LIST = gstInList;
+		END FOR;			
+		
+		
+	## Above piece of code also creates Array objects for eg. ["ABC","XYZ"]	
